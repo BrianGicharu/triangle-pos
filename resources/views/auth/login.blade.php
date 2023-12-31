@@ -84,7 +84,7 @@
 
             <p class="text-center mt-5 lead">
                 Developed By
-                <a href="#" class="font-weight-bold text-primary">PCL Kenya</a>
+                <a href="#" class="font-weight-bold text-primary">Brian Gicharu & Kelvin Githinji</a>
             </p>
         </div>
     </div>

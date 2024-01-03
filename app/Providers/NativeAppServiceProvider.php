@@ -13,7 +13,9 @@ class NativeAppServiceProvider implements ProvidesPhpIni
      */
     public function boot(): void
     {
-        Window::open();
+        Window::open()
+            ->width(800)
+            ->height(800);
     }
 
     /**
@@ -22,6 +24,11 @@ class NativeAppServiceProvider implements ProvidesPhpIni
     public function phpIni(): array
     {
         return [
+            'memory_limit' => '512M',
+            'display_errors' => '1',
+            'error_reporting' => 'E_ALL',
+            'max_execution_time' => '0',
+            'max_input_time' => '0',
         ];
     }
 }

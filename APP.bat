@@ -1,15 +1,20 @@
 @echo off
 
-rem Start the Laravel development server in the background
-start "Laravel Server" /B php artisan serve
+powershell Start-Process -FilePath "%0" -Verb RunAs
 
-rem Wait for a moment (adjust the timeout value as needed)
-timeout /t 5 /nobreak
+set PORT=8000
+set PROXY_HOST=127.0.0.1
+set PROXY_PORT=8000
 
-rem Open Google Chrome with the Laravel application URL
-start chrome http://localhost:8000
+echo Starting Laravel app on port %PORT%...
 
-rem You can adjust the URL based on your Laravel application configuration
-rem For example, if your Laravel app is running on a different port, update the URL accordingly
+REM Start Laravel application
+start "Laravel App" php artisan serve
 
-exit
+REM Wait for a moment to ensure Laravel is up and running
+timeout /t 5
+
+REM Open the app in a proxy window
+start electron/chromedriver.exe http://%PROXY_HOST%:%PROXY_PORT%"
+
+
